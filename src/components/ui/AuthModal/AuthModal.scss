@@ -1,0 +1,274 @@
+@use '../../../styles/variables' as *;
+
+.auth-modal {
+  position: fixed;
+  inset: 0;
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  z-index: 1000;
+  padding: 0 16px 24px;
+  background: rgba(26, 21, 18, 0.35);
+  border-radius: 32px;
+
+  &__content {
+    background: $color-cream;
+    padding: 32px 24px;
+    margin-top: 12%;
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    border-radius: 24px;
+    box-shadow: 0 12px 36px rgba(0, 0, 0, 0.16);
+    border: 1px solid rgba(122, 99, 85, 0.18);
+  }
+
+  &__close {
+    position: absolute;
+    top: 16px;
+    right: 16px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+
+    &:hover {
+      opacity: 0.7;
+    }
+  }
+
+  &__title {
+    font-size: 24px;
+    font-weight: 600;
+    margin-bottom: 8px;
+    text-align: center;
+    color: $color-primary;
+  }
+
+  &__promo {
+    margin: 0 0 20px;
+    text-align: center;
+    color: $color-elements;
+    font-size: 14px;
+    line-height: 1.5;
+  }
+
+  &__error {
+    background: rgba(196, 127, 107, 0.1);
+    color: $color-terracotta-light;
+    padding: 12px;
+    border-radius: 4px;
+    margin-bottom: 16px;
+    font-size: 14px;
+  }
+
+  &__form {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__field {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__input {
+    padding: 12px 16px;
+    border: none;
+    box-shadow: none;
+    outline: none;
+    font-size: 14px;
+    background: $color-icons-light;
+    border-radius: 12px;
+
+    &::placeholder {
+      color: $color-bg-light;
+    }
+  }
+
+  &__error-text {
+    color: $color-accent;
+    font-size: 12px;
+  }
+
+  &__submit {
+    padding: 12px 24px;
+    background: #e53935;
+    color: white;
+    border: none;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+
+    &:hover:not(:disabled) {
+      background: #c62828;
+      transform: translateY(-1px);
+    }
+
+    &:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+    }
+
+    &--secondary {
+      background: rgba(0, 0, 0, 0.08);
+      color: $color-primary-light;
+
+      &:hover:not(:disabled) {
+        background: rgba(0, 0, 0, 0.15);
+        color: $color-terracotta-light;
+      }
+    }
+  }
+
+  &__divider {
+    display: flex;
+    align-items: center;
+    margin: 16px 0;
+    color: $color-icons;
+    font-size: 14px;
+
+    &::before,
+    &::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: rgba(122, 99, 85, 0.2);
+    }
+
+    span {
+      padding: 0 16px;
+    }
+  }
+
+  &__google {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    padding: 12px 24px;
+    background: $color-cream;
+    color: $color-primary;
+    border: 1px solid rgba(122, 99, 85, 0.2);
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    margin-bottom: 16px;
+    width: 100%;
+    border-radius: 12px;
+    transition: all 0.2s ease;
+
+    &:hover {
+      background: rgba(232, 220, 200, 0.8);
+      transform: translateY(-1px);
+    }
+  }
+
+  &__google-icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  &__switch {
+    text-align: center;
+    font-size: 14px;
+    color: $color-icons;
+
+    &-btn {
+      background: none;
+      margin-left: 5px;
+      border: none;
+      color: $color-accent;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+
+      &:hover {
+        color: $color-accent-hover;
+      }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .auth-modal {
+    background: rgba(0, 0, 0, 0.6);
+
+    &__content {
+      background: $color-surface-dark;
+      border-color: $color-elements-dark;
+      box-shadow: 0 12px 36px rgba(0, 0, 0, 0.4);
+    }
+
+    &__title {
+      color: $color-primary-dark;
+    }
+
+    &__promo {
+      color: $color-icons-dark;
+    }
+
+    &__error {
+      background: rgba(31, 99, 108, 0.1);
+      color: $color-aquamarine;
+    }
+
+    &__input {
+      background: rgba(255, 255, 255, 0.1);
+      color: $color-primary-dark;
+
+      &::placeholder {
+        color: $color-icons-dark;
+      }
+    }
+
+    &__error-text {
+      color: $color-aquamarine;
+    }
+
+    &__submit {
+      background: $color-aquamarine;
+
+      &:hover:not(:disabled) {
+        background: $color-aquamarine-hover;
+      }
+    }
+
+    &__divider {
+      color: $color-icons-dark;
+
+      &::before,
+      &::after {
+        background: $color-elements-dark;
+      }
+    }
+
+    &__google {
+      background: rgba(255, 255, 255, 0.1);
+      color: $color-primary-dark;
+      border-color: $color-elements-dark;
+
+      &:hover {
+        background: rgba(255, 255, 255, 0.15);
+      }
+    }
+
+    &__switch {
+      color: $color-icons-dark;
+
+      &-btn {
+        color: $color-aquamarine;
+
+        &:hover {
+          color: $color-aquamarine-hover;
+        }
+      }
+    }
+  }
+}

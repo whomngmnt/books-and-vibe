@@ -1,0 +1,91 @@
+@use '../../../styles/variables' as *;
+
+.formControl {
+  width: 176px !important;
+  height: 40px !important;
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 100% !important;
+  }
+}
+
+.select {
+  height: 40px !important;
+  border-radius: 12px !important;
+  background-color: $color-surface-light !important;
+  color: $color-primary-light !important;
+
+  @include body-text;
+
+  fieldset {
+    border-color: $color-elements-light !important;
+  }
+
+  &:hover fieldset,
+  &.Mui-focused fieldset {
+    border-color: $color-terracotta-light !important;
+    border-width: 1px !important;
+  }
+
+  & img {
+    right: 12px !important;
+    position: absolute !important;
+    pointer-events: none;
+  }
+}
+
+.menuItem {
+  @include body-text;
+  color: $color-primary-light !important;
+  background-color: $color-surface-light !important;
+
+  &:hover,
+  &.Mui-selected {
+    background-color: $color-terracotta-light !important;
+    color: $color-bg-light !important;
+  }
+
+  &.Mui-selected:hover {
+    background-color: $color-terracotta-hover-light !important;
+    color: $color-bg-light !important;
+  }
+
+  &:focus,
+  &.Mui-focusVisible {
+    outline: none !important;
+    box-shadow: none !important;
+  }
+}
+
+[data-theme='dark'] {
+  .select {
+    background-color: $color-surface-dark !important;
+    color: $color-primary-dark !important;
+
+    fieldset {
+      border-color: $color-elements-dark !important;
+    }
+
+    &:hover fieldset,
+    &.Mui-focused fieldset {
+      border-color: $color-accent-light !important;
+      border-width: 1px !important;
+    }
+  }
+
+  .menuItem {
+    color: $color-primary-dark !important;
+    background-color: $color-surface-dark !important;
+
+    &:hover,
+    &.Mui-selected {
+      background-color: $color-accent-light !important;
+      color: $color-bg-dark !important;
+    }
+
+    &.Mui-selected:hover {
+      background-color: $color-accent-hover-light !important;
+      color: $color-bg-dark !important;
+    }
+  }
+}

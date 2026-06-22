@@ -1,0 +1,42 @@
+@use '../../styles/variables' as *;
+@use '../../styles/product-grid' as grid;
+
+.catalog {
+  @include grid.page-container;
+  padding-top: 112px;
+}
+
+.catalog-title {
+  @include h1;
+  color: $color-primary;
+  margin-bottom: 4px;
+}
+
+.catalog-count {
+  @include body-text;
+  color: $color-elements;
+  margin-bottom: 16px;
+}
+
+.catalog-grid {
+  @include grid.product-grid;
+  margin-top: 24px;
+}
+
+.catalog-empty {
+  @include body-text;
+  color: $color-elements;
+  text-align: center;
+  padding: 48px 0;
+}
+
+[data-theme='dark'] {
+  .catalog-title {
+    color: $color-primary-dark;
+  }
+
+  .catalog-count,
+  .catalog-empty {
+    color: $color-icons-dark;
+  }
+}

@@ -1,0 +1,17 @@
+export const genreIcons: Record<string, string> = {
+  'sci-fi': '🚀',
+  'fantasy': '🧙',
+  'mystery': '🔍',
+  'romance': '💕',
+  'historical': '📜',
+  'horror': '👻',
+  'business': '💼',
+  'psychology': '🧠',
+  'finance': '💰',
+  'biographies': '🏆',
+  'programming': '💻',
+  'design': '🎨',
+  'gaming': '🎮',
+  'fairy-tales': '🧚',
+  'educational': '📚',
+};

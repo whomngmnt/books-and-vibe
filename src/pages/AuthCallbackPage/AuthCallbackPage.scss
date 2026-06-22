@@ -1,0 +1,77 @@
+@use '../../styles/variables' as *;
+
+.auth-callback-page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  background: $color-white;
+
+  &__container {
+    max-width: 500px;
+    width: 100%;
+    background: white;
+    padding: 40px;
+    border-radius: 0;
+    text-align: center;
+  }
+
+  h1 {
+    font-size: 28px;
+    font-weight: 600;
+    margin-bottom: 16px;
+    color: $color-primary;
+  }
+
+  p {
+    font-size: 16px;
+    color: $color-elements;
+    margin-bottom: 12px;
+  }
+
+  button {
+    margin-top: 24px;
+    padding: 12px 24px;
+    background: $color-primary;
+    color: white;
+    border: none;
+    border-radius: 0;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: $color-hover-bg;
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .auth-callback-page {
+    background: $color-bg-dark;
+
+    &__container {
+      background: $color-surface-dark;
+      border: 1px solid $color-elements-dark;
+      border-radius: 24px;
+    }
+
+    h1 {
+      color: $color-primary-dark;
+    }
+
+    p {
+      color: $color-icons-dark;
+    }
+
+    button {
+      background: $color-aquamarine;
+
+      &:hover {
+        background: $color-aquamarine-hover;
+      }
+    }
+  }
+}

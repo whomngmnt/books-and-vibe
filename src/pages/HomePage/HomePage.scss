@@ -1,0 +1,156 @@
+@use '../../styles/variables' as *;
+
+.home-page {
+  max-width: 100%;
+  margin: 0 auto;
+  padding: 40px 0 32px;
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  width: 100%;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 32px 24px;
+    gap: 56px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 24px 16px 32px;
+  }
+}
+
+.home-page__quotes-section {
+  width: 100%;
+  margin: 8px 0 0;
+  padding: 28px 20px;
+  background: linear-gradient(
+    135deg,
+    rgba(245, 240, 232, 0.98) 0%,
+    rgba(232, 220, 200, 0.72) 45%,
+    rgba(232, 220, 200, 0.56) 100%
+  );
+  overflow: hidden;
+}
+
+.home-page__quotes-wrapper {
+  position: relative;
+  min-height: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.home-page__quote-card {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 24px 28px;
+  border-radius: 24px;
+  border: 1px solid rgba(123, 84, 52, 0.18);
+  background: rgba(255, 251, 246, 0.85);
+  box-shadow: 0 16px 40px rgba(88, 58, 36, 0.12);
+  opacity: 0;
+  transform: translateY(10px);
+  animation: quote-fade 10s ease-in-out infinite;
+}
+
+.home-page__quote-card:nth-child(2) {
+  animation-delay: 5s;
+}
+
+.home-page__quote-text {
+  margin: 0 0 12px;
+  font-size: clamp(1.05rem, 2.2vw, 1.35rem);
+  line-height: 1.7;
+  color: $color-primary-light;
+  max-width: 760px;
+}
+
+.home-page__quote-author {
+  font-size: 0.95rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: $color-terracotta-light;
+}
+
+@media (max-width: $breakpoint-tablet) {
+  .home-page__quotes-section {
+    padding: 24px 16px;
+  }
+
+  .home-page__quotes-wrapper {
+    min-height: 170px;
+  }
+}
+
+@media (max-width: $breakpoint-mobile) {
+  .home-page__quotes-section {
+    padding: 20px 12px;
+  }
+
+  .home-page__quotes-wrapper {
+    min-height: 160px;
+  }
+
+  .home-page__quote-card {
+    padding: 20px 16px;
+  }
+}
+
+@keyframes quote-fade {
+  0%,
+  100% {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  8%,
+  42% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  50%,
+  92% {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+}
+
+body:not([data-theme='dark']) .home-page {
+  background: $color-bg-light;
+}
+
+body[data-theme='dark'] {
+  .home-page {
+    background: $color-bg-dark;
+  }
+
+  .home-page__quotes-section {
+    background: linear-gradient(
+      135deg,
+      $color-surface-dark 0%,
+      rgba(27, 31, 39, 0.72) 45%,
+      rgba(27, 31, 39, 0.56) 100%
+    );
+  }
+
+  .home-page__quote-card {
+    background: rgba(27, 31, 39, 0.85);
+    border-color: rgba(41, 48, 61, 0.18);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.3);
+  }
+
+  .home-page__quote-text {
+    color: $color-primary-dark;
+  }
+
+  .home-page__quote-author {
+    color: $color-accent-light;
+  }
+}

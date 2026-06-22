@@ -1,0 +1,94 @@
+@use '../../../styles/variables' as *;
+
+.search-result-card {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+  }
+
+  &__image {
+    width: 48px;
+    height: 64px;
+    object-fit: cover;
+    border-radius: 4px;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    flex: 1;
+  }
+
+  &__author {
+    @include small-text;
+    color: $color-elements;
+    margin: 0;
+  }
+
+  &__name {
+    @include body-text;
+    color: $color-primary;
+    margin: 0;
+    font-weight: $font-medium;
+  }
+
+  &__price {
+    @include small-text;
+    color: $color-primary;
+    margin: 0;
+    font-weight: $font-semibold;
+
+    &--discount {
+      color: $color-accent;
+    }
+
+    &--regular {
+      color: $color-brick;
+      text-decoration: line-through;
+      font-size: 12px;
+      margin-left: 8px;
+    }
+  }
+
+  &__prices {
+    display: flex;
+    align-items: center;
+  }
+}
+
+[data-theme='dark'] {
+  .search-result-card {
+    &:hover {
+      background-color: $color-hover-bg-dark;
+    }
+
+    &__author {
+      color: $color-icons-dark;
+    }
+
+    &__name {
+      color: $color-primary-dark;
+    }
+
+    &__price {
+      color: $color-primary-dark;
+
+      &--discount {
+        color: $color-accent;
+      }
+
+      &--regular {
+        color: $color-brick;
+      }
+    }
+  }
+}

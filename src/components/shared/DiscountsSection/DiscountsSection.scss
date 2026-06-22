@@ -1,0 +1,229 @@
+@use '../../../styles/variables' as *;
+
+.discounts-section {
+  width: calc(100% - 64px);
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 72px 32px 56px;
+  box-sizing: border-box;
+  position: relative;
+  z-index: 10;
+  border-radius: $border-radius-xl;
+  background: linear-gradient(
+    135deg,
+    rgba(248, 242, 234, 0.72) 0%,
+    rgba(236, 224, 208, 0.56) 100%
+  );
+
+  &__header {
+    text-align: center;
+    margin-bottom: 32px;
+  }
+
+  &__title-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    margin-bottom: 16px;
+  }
+
+  &__icon {
+    color: $color-terracotta-light;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    @include h2;
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    line-height: 1.1;
+    color: $color-primary-light;
+    margin: 0;
+  }
+
+  &__subtitle {
+    @include body-text;
+    color: $color-elements-light;
+    max-width: 600px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  &__slider-wrapper {
+    position: relative;
+    overflow: hidden;
+  }
+
+  &__nav {
+    display: flex;
+    justify-content: flex-end;
+    gap: 12px;
+    margin-bottom: 12px;
+    padding: 4px;
+  }
+
+  &__arrow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: $border-radius-md;
+    background-color: rgba(255, 255, 255, 0.8);
+    color: $color-primary-light;
+    cursor: pointer;
+    transition:
+      background-color 0.3s ease,
+      color 0.3s ease,
+      transform 0.3s ease,
+      box-shadow 0.3s ease;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+
+    &:hover {
+      background-color: $color-terracotta-light;
+      color: $color-white-light;
+      transform: translateY(-2px);
+      box-shadow: 0 6px 18px rgba(229, 92, 59, 0.24);
+    }
+
+    &:active {
+      transform: translateY(0);
+    }
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 100%;
+    overflow: hidden;
+    padding: 12px 8px 20px;
+
+    .swiper-wrapper {
+      align-items: stretch;
+    }
+  }
+
+  &__slide {
+    height: auto;
+    display: flex;
+    justify-content: center;
+    padding: 8px;
+    overflow: visible;
+  }
+
+  &__skeleton {
+    width: 100%;
+    height: 506px;
+    background: linear-gradient(
+      90deg,
+      rgba(0, 0, 0, 0.05) 25%,
+      rgba(0, 0, 0, 0.1) 50%,
+      rgba(0, 0, 0, 0.05) 75%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 1.5s infinite;
+    border-radius: $border-radius-lg;
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    width: calc(100% - 32px);
+    padding: 56px 20px 44px;
+    border-radius: $border-radius-lg;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: calc(100% - 24px);
+    padding: 40px 12px 32px;
+
+    &__header {
+      margin-bottom: 24px;
+    }
+
+    &__title-wrapper {
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    &__icon {
+      width: 24px;
+      height: 24px;
+    }
+
+    &__title {
+      font-size: 28px;
+    }
+
+    &__subtitle {
+      font-size: 14px;
+    }
+
+    &__nav {
+      justify-content: center;
+      margin-bottom: 8px;
+    }
+
+    &__arrow {
+      width: 40px;
+      height: 40px;
+    }
+
+    &__container {
+      padding: 10px 4px 16px;
+    }
+
+    &__slide {
+      padding: 6px;
+    }
+
+    &__skeleton {
+      height: 400px;
+    }
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: 200% 0;
+  }
+
+  100% {
+    background-position: -200% 0;
+  }
+}
+
+[data-theme='dark'] {
+  .discounts-section {
+    background: linear-gradient(
+      135deg,
+      rgba(27, 31, 39, 0.72) 0%,
+      rgba(27, 31, 39, 0.56) 100%
+    );
+
+    &__title {
+      color: $color-primary-dark;
+    }
+
+    &__subtitle {
+      color: $color-icons-dark;
+    }
+
+    &__arrow {
+      background-color: rgba(255, 255, 255, 0.1);
+      color: $color-primary-dark;
+
+      &:hover {
+        background-color: $color-accent-light;
+        color: $color-white-light;
+      }
+    }
+
+    &__skeleton {
+      background: linear-gradient(
+        90deg,
+        rgba(255, 255, 255, 0.05) 25%,
+        rgba(255, 255, 255, 0.1) 50%,
+        rgba(255, 255, 255, 0.05) 75%
+      );
+    }
+  }
+}

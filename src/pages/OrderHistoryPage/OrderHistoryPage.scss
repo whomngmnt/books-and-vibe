@@ -1,0 +1,328 @@
+@use '../../styles/variables' as *;
+
+.order-history {
+  padding: 100px 20px 60px;
+  min-height: 100vh;
+  background: linear-gradient(
+    135deg,
+    rgba(245, 240, 232, 0.96) 0%,
+    rgba(232, 220, 200, 0.72) 100%
+  );
+  display: flex;
+  flex-direction: column;
+
+  &-error {
+    margin-top: 40px;
+    text-align: center;
+    font-size: 30px;
+  }
+
+  &__container {
+    max-width: 900px;
+    margin: 40px auto;
+    background: rgba(255, 255, 255, 0.9);
+    padding: 40px;
+    border-radius: 24px;
+    box-shadow: 0 16px 42px rgba(45, 34, 26, 0.12);
+    border: 1px solid rgba(122, 99, 85, 0.16);
+    backdrop-filter: blur(10px);
+    min-height: 500px;
+    min-width: 75%;
+  }
+
+  &__title {
+    font-size: 32px;
+    font-weight: 700;
+    margin-bottom: 24px;
+    color: $color-primary;
+    text-align: center;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: 60px 20px;
+  }
+
+  &__empty-text {
+    font-size: 22px;
+    font-weight: 600;
+    color: $color-primary;
+    margin-bottom: 12px;
+  }
+
+  &__empty-subtext {
+    font-size: 15px;
+    color: $color-elements;
+  }
+
+  &__list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+  }
+
+  &__card {
+    background: rgba(245, 240, 232, 0.85);
+    border-radius: 16px;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    border: 1px solid rgba(122, 99, 85, 0.18);
+    max-width: 1000px;
+    width: 100%;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 26px rgba(45, 34, 26, 0.12);
+      cursor: pointer;
+    }
+  }
+
+  &__card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 18px 22px;
+    background: linear-gradient(
+      135deg,
+      $color-icons-light 0%,
+      $color-elements-light 100%
+    );
+    color: $color-white;
+    user-select: none;
+
+    &:hover {
+      filter: brightness(1.07);
+    }
+  }
+
+  &__header-right {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+  }
+
+  &__chevron {
+    font-size: 20px;
+    line-height: 1;
+    transition: transform 0.3s ease;
+    display: inline-block;
+    color: $color-white;
+
+    &--open {
+      transform: rotate(180deg);
+    }
+  }
+
+  &__order-id {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+
+  &__status {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 16px;
+  }
+
+  &__card-body {
+    padding: 20px 22px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__info {
+    display: flex;
+    gap: 12px;
+  }
+
+  &__label {
+    font-weight: 600;
+    color: $color-primary;
+    min-width: 140px;
+  }
+
+  &__value {
+    color: $color-primary;
+    flex: 1;
+
+    &--price {
+      font-weight: 700;
+      font-size: 17px;
+    }
+  }
+
+  &__items {
+    margin-top: 8px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(122, 99, 85, 0.18);
+
+    &--dropdown {
+      margin-top: 0;
+      padding-top: 0;
+      border-top: none;
+      display: grid;
+      grid-template-rows: 0fr;
+      transition: grid-template-rows 0.35s ease;
+    }
+
+    &--open {
+      grid-template-rows: 1fr;
+    }
+  }
+
+  &__items-inner {
+    overflow: hidden;
+    padding: 0 0 4px;
+    border-top: 1px solid rgba(122, 99, 85, 0.18);
+    margin-top: 8px;
+
+    .order-history__items--open & {
+      padding-top: 14px;
+    }
+  }
+
+  &__items-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: $color-primary;
+    margin-bottom: 10px;
+  }
+
+  &__items-list {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  &__item {
+    display: flex;
+    gap: 14px;
+    padding: 10px 15px;
+    background: $color-icons-light;
+    border-radius: 10px;
+    border: 1px solid rgba(122, 99, 85, 0.16);
+    transition: all 0.2s ease;
+    cursor: pointer;
+
+    &:hover {
+      border-color: $color-terracotta-light;
+      box-shadow: 0 4px 12px rgba(229, 92, 59, 0.12);
+    }
+  }
+
+  &__item-image {
+    width: 56px;
+    height: 76px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+  }
+
+  &__item-details {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+
+  &__item-name {
+    font-weight: 600;
+    color: $color-primary;
+    font-size: 14px;
+    transition: color 0.2s ease;
+
+    &:hover {
+      color: $color-terracotta-light;
+    }
+  }
+
+  &__item-author {
+    font-size: 13px;
+    color: $color-elements;
+  }
+
+  &__item-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 13px;
+    color: $color-primary;
+  }
+
+  &__item-price {
+    font-weight: 700;
+    font-size: 14px;
+    color: $color-terracotta-light;
+  }
+}
+
+[data-theme='dark'] {
+  .order-history {
+    background: linear-gradient(
+      135deg,
+      rgba(17, 20, 26, 0.96) 0%,
+      rgba(27, 31, 39, 0.72) 100%
+    );
+
+    &__container {
+      background: rgba(27, 31, 39, 0.9);
+      border-color: $color-elements-dark;
+      box-shadow: 0 16px 42px rgba(0, 0, 0, 0.4);
+    }
+
+    &__title,
+    &__empty-text,
+    &__label,
+    &__value,
+    &__items-title,
+    &__item-name,
+    &__item-meta {
+      color: $color-primary-dark;
+    }
+
+    &__empty-subtext,
+    &__item-author {
+      color: $color-icons-dark;
+    }
+
+    &__card {
+      background: rgba(27, 31, 39, 0.85);
+      border-color: $color-elements-dark;
+
+      &:hover {
+        box-shadow: 0 10px 26px rgba(0, 0, 0, 0.4);
+      }
+    }
+
+    &__card-header {
+      background: linear-gradient(
+        135deg,
+        $color-aquamarine 0%,
+        $color-primary-dark 100%
+      );
+    }
+
+    &__item {
+      background: rgba(255, 255, 255, 0.05);
+      border-color: $color-elements-dark;
+
+      &:hover {
+        border-color: $color-aquamarine;
+        box-shadow: 0 4px 12px rgba(31, 99, 108, 0.12);
+      }
+    }
+
+    &__item-name {
+      &:hover {
+        color: $color-aquamarine;
+      }
+    }
+
+    &__item-price {
+      color: $color-aquamarine;
+    }
+  }
+}

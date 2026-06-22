@@ -1,0 +1,59 @@
+@use '../../../styles/variables' as *;
+
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  margin-top: 40px;
+}
+
+.pagination__btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 32px;
+  height: 32px;
+  padding: 0 8px;
+  border: 1px solid $color-elements;
+  border-radius: 50%;
+  background: $color-bg-light;
+  color: $color-primary;
+  cursor: pointer;
+  @include body-text;
+  transition:
+    border-color 0.2s ease,
+    background 0.2s ease;
+
+  &:hover:not(:disabled) {
+    border-color: $color-primary;
+  }
+
+  &:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+  }
+}
+
+.pagination__btn--active {
+  background: $color-primary;
+  border-color: $color-primary;
+  color: $color-bg-light;
+}
+
+.pagination__dots {
+  @include body-text;
+  color: $color-elements;
+  padding: 0 4px;
+}
+
+[data-theme='dark'] {
+  .pagination__btn {
+    border-color: $raw-aquamarine;
+  }
+
+  .pagination__btn--active {
+    background-color: $raw-aquamarine;
+    border-color: $raw-aquamarine;
+  }
+}

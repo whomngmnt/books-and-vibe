@@ -1,0 +1,221 @@
+@use '../../../styles/variables' as *;
+
+.footer {
+  width: 100%;
+  background: $color-charcoal;
+  color: $color-cream;
+  font-family: $font-body;
+  padding: 80px 32px 0;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+
+  &__content {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 64px;
+  }
+
+  &__left {
+    flex: 1;
+    max-width: 400px;
+  }
+
+  &__slogan {
+    @include h1;
+    font-family: $font-accent;
+    font-size: 48px;
+    line-height: 1.2;
+    color: $color-cream;
+    margin: 0;
+  }
+
+  &__right {
+    flex: 1;
+  }
+
+  &__links {
+    display: flex;
+    gap: 64px;
+  }
+
+  &__column {
+    flex: 1;
+  }
+
+  &__column-title {
+    @include h4;
+    color: $color-cream;
+    margin-bottom: 24px;
+    font-family: $font-heading;
+  }
+
+  &__column-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  &__link {
+    @include body-text;
+    color: $color-cream;
+    opacity: 0.8;
+    text-decoration: none;
+    transition: all 0.2s ease;
+
+    &:hover {
+      opacity: 1;
+      color: $color-terracotta-light;
+    }
+  }
+
+  &__bottom {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 60px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+  }
+
+  &__giant-text {
+    position: absolute;
+    left: -5%;
+    bottom: -20px;
+    font-size: 200px;
+    font-weight: 900;
+    font-family: $font-accent;
+    color: rgba(245, 240, 232, 0.05);
+    white-space: nowrap;
+    pointer-events: none;
+    user-select: none;
+  }
+
+  &__back-to-top {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 16px 32px;
+    background: rgba(245, 240, 232, 0.1);
+    border: 1px solid rgba(245, 240, 232, 0.2);
+    color: $color-cream;
+    font-family: $font-heading;
+    font-weight: 600;
+    font-size: 14px;
+    text-transform: uppercase;
+    cursor: pointer;
+    border-radius: $border-radius-full;
+    transition: all 0.3s ease;
+    z-index: 1;
+
+    &:hover {
+      background: $color-terracotta-light;
+      border-color: $color-terracotta-light;
+      transform: translateY(-2px);
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 48px 20px 0;
+
+    &__content {
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    &__left {
+      max-width: 100%;
+    }
+
+    &__slogan {
+      font-size: 32px;
+    }
+
+    &__links {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &__bottom {
+      flex-direction: column;
+      gap: 24px;
+      padding: 40px 20px;
+      text-align: center;
+    }
+
+    &__giant-text {
+      font-size: 100px;
+      left: -10%;
+      bottom: -10px;
+    }
+
+    &__back-to-top {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    &__content {
+      flex-direction: column;
+      gap: 48px;
+    }
+
+    &__left {
+      max-width: 100%;
+    }
+
+    &__links {
+      gap: 32px;
+    }
+
+    &__giant-text {
+      font-size: 150px;
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .footer {
+    background: linear-gradient(
+      135deg,
+      rgba(26, 35, 50, 0.95) 0%,
+      rgba(17, 20, 26, 0.95) 100%
+    );
+    color: $color-primary-dark;
+
+    &__slogan,
+    &__column-title,
+    &__link {
+      color: $color-primary-dark;
+    }
+
+    &__link {
+      &:hover {
+        color: $color-aquamarine;
+      }
+    }
+
+    &__giant-text {
+      color: rgba(240, 242, 245, 0.03);
+    }
+
+    &__back-to-top {
+      background: rgba(240, 242, 245, 0.1);
+      border-color: rgba(240, 242, 245, 0.2);
+      color: $color-primary-dark;
+
+      &:hover {
+        background: $color-aquamarine;
+        border-color: $color-aquamarine;
+      }
+    }
+  }
+}

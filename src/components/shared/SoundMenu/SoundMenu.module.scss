@@ -1,0 +1,235 @@
+@use '../../../styles/variables' as *;
+
+.widget {
+  position: fixed;
+  bottom: 145px;
+  right: 50px;
+  z-index: 500;
+
+  @media (max-width: $breakpoint-mobile) {
+    bottom: 95px;
+    right: 30px;
+  }
+}
+
+.item {
+  position: absolute;
+  bottom: 4px;
+  right: 4px;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: $color-primary-light;
+  box-shadow: $shadow-card;
+  will-change: transform;
+  transition: background 0.2s;
+
+  &::after {
+    content: attr(aria-label);
+    position: absolute;
+    bottom: calc(100% + 6px);
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 12px;
+    white-space: nowrap;
+    background: $raw-coffee-dark;
+    color: $color-bg-light;
+    padding: 3px 8px;
+    border-radius: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.15s;
+  }
+
+  &:hover {
+    background: $color-hover-bg-light;
+
+    &::after {
+      opacity: 1;
+    }
+  }
+
+  &Active {
+    background: $color-elements-light;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.icon {
+  width: 30px;
+  height: 30px;
+  object-fit: contain;
+  pointer-events: none;
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+.volumeButton {
+  position: absolute;
+  bottom: 14px;
+  right: 14px;
+  width: 22px;
+  height: 22px;
+  border: 1px solid $color-elements-light;
+  border-radius: 50%;
+  cursor: pointer;
+  background-color: $color-bg-light;
+  color: $color-primary-light;
+  box-shadow: none;
+  font-size: 7px;
+  font-weight: 700;
+  z-index: 12;
+  will-change: transform;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s,
+    color 0.2s;
+
+  &:hover {
+    background-color: $color-terracotta-light;
+    border-color: $color-terracotta-light;
+    color: $color-bg-light;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    bottom: 11px;
+    right: 11px;
+    width: 20px;
+    height: 20px;
+    font-size: 7px;
+  }
+}
+
+.volumeButtonActive {
+  background-color: $color-terracotta-light;
+  border-color: $color-terracotta-light;
+  color: $color-bg-light;
+}
+
+.trigger {
+  position: relative;
+  z-index: 10;
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: $color-elements-light;
+  box-shadow: $shadow-card;
+  transition:
+    background 0.25s,
+    color 0.25s;
+
+  &:hover {
+    background-color: $color-primary-light;
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    inset: -3px;
+    border-radius: 50%;
+    border: 2px solid $color-terracotta-light;
+    opacity: 0;
+    pointer-events: none;
+  }
+
+  &Active {
+    &::before {
+      animation: pulse 1.8s ease-out infinite;
+    }
+  }
+
+  &__icon {
+    width: 35px;
+    height: 35px;
+    object-fit: contain;
+    pointer-events: none;
+
+    @media (max-width: $breakpoint-mobile) {
+      width: 30px;
+      height: 30px;
+    }
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 50px;
+    height: 50px;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.6;
+  }
+
+  100% {
+    transform: scale(1.7);
+    opacity: 0;
+  }
+}
+
+[data-theme='dark'] {
+  .trigger {
+    background-color: $raw-aquamarine;
+
+    &:hover {
+      background-color: $raw-aqua-deep;
+    }
+
+    &::before {
+      border-color: $raw-aquamarine;
+    }
+  }
+
+  .item {
+    background-color: $raw-aquamarine;
+
+    &:hover {
+      background: $raw-aqua-deep;
+    }
+
+    &::after {
+      background: $raw-aqua-hover;
+      color: $raw-ice;
+    }
+
+    &Active {
+      background-color: $raw-aqua-active;
+    }
+  }
+
+  .volumeButton {
+    border-color: $color-elements-dark;
+    background-color: $color-bg-dark;
+    color: $color-primary-dark;
+
+    &:hover {
+      background-color: $raw-aquamarine;
+      border-color: $raw-aquamarine;
+      color: $color-bg-dark;
+    }
+  }
+
+  .volumeButtonActive {
+    background-color: $raw-aquamarine;
+    border-color: $raw-aquamarine;
+    color: $color-bg-dark;
+  }
+}

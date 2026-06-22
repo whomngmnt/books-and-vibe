@@ -1,0 +1,9 @@
+.icon {
+  display: block;
+}
+
+[data-theme='dark'] {
+  .icon:not(.icon__colored) {
+    filter: brightness(0) invert(1);
+  }
+}

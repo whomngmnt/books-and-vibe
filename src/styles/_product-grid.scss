@@ -1,0 +1,27 @@
+@use 'variables.scss' as *;
+
+@mixin product-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 24px 16px;
+
+  @media (max-width: $breakpoint-mobile) {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+}
+
+@mixin page-container {
+  max-width: 1136px;
+  margin: 0 auto;
+  padding: 112px 32px 80px;
+  box-sizing: border-box;
+
+  @media (max-width: $breakpoint-tablet) {
+    padding: 104px 24px 64px;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 96px 16px 48px;
+  }
+}

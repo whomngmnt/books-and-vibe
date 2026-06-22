@@ -1,0 +1,55 @@
+@use '../../styles/variables' as *;
+
+.rights {
+  padding: 112px 24px 64px;
+
+  &__container {
+    max-width: 1136px;
+    margin: 0 auto;
+
+    display: flex;
+    align-items: flex-start;
+    gap: 80px;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+      gap: 40px;
+    }
+  }
+
+  &__aside {
+    max-width: 900px;
+  }
+
+  &__title {
+    width: 220px;
+    flex-shrink: 0;
+    margin: 0;
+    text-align: left;
+
+    position: sticky;
+    top: 128px;
+  }
+
+  &__content {
+    max-width: 900px;
+    margin: 0 auto;
+
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  &__section {
+    display: block;
+  }
+
+  &__section h2 {
+    margin: 0 0 8px;
+  }
+
+  &__section p {
+    margin: 0;
+    line-height: 1.6;
+  }
+}

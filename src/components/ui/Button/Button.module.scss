@@ -1,0 +1,50 @@
+@use '../../../styles/variables' as *;
+
+.button {
+  width: 100%;
+  height: 40px;
+  border-radius: 12px !important;
+  @include button-text;
+  text-transform: none !important;
+  transition: transform 300ms ease !important;
+
+  &:hover {
+    transform: scale(1.02);
+  }
+}
+
+.primary {
+  background-color: $color-terracotta-light !important;
+  color: rgba(245, 240, 232, 0.95) !important;
+  box-shadow: 0 4px 20px rgba(229, 92, 59, 0.3) !important;
+
+  &:hover {
+    background-color: $color-terracotta-hover-light !important;
+    box-shadow: 0 6px 30px rgba(229, 92, 59, 0.4) !important;
+  }
+}
+
+.selected {
+  background-color: $color-surface-light !important;
+  color: $color-terracotta-light !important;
+  border: 1px solid $color-elements-light !important;
+}
+
+[data-theme='dark'] {
+  .primary {
+    background-color: $color-accent-light !important;
+    color: $color-white-light !important;
+    box-shadow: 0 4px 20px rgba(31, 99, 108, 0.3);
+
+    &:hover {
+      background-color: $color-accent-hover-light !important;
+      box-shadow: 0 6px 30px rgba(31, 99, 108, 0.4);
+    }
+  }
+
+  .selected {
+    background-color: $color-surface-dark !important;
+    color: $color-accent-light !important;
+    border-color: $color-accent-light !important;
+  }
+}

@@ -1,0 +1,25 @@
+@use '../../styles/variables' as *;
+
+.input {
+  width: 289px !important;
+  border-radius: 8px !important;
+  background-color: $color-icons;
+  @include body-text;
+
+  fieldset {
+    border-color: $color-elements !important;
+    border-radius: 8px !important;
+  }
+
+  &:hover fieldset {
+    border-color: $color-secondary !important;
+  }
+
+  &:focus-within fieldset {
+    color: $color-primary;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    width: 100%;
+  }
+}

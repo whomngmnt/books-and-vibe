@@ -1,0 +1,779 @@
+@use '../../styles/variables' as *;
+@use '../../styles/product-grid' as grid;
+
+.checkout-page {
+  @include grid.page-container;
+  padding: 120px 20px 40px;
+  position: relative;
+  min-height: 100dvh;
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 80px 16px 20px;
+  }
+
+  &__title {
+    @include h1;
+    color: $color-primary;
+    margin-bottom: 32px;
+  }
+
+  &__content {
+    display: flex;
+    gap: 32px;
+    align-items: flex-start;
+
+    @media (max-width: $breakpoint-tablet) {
+      flex-direction: column;
+    }
+  }
+
+  &__form-section {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    width: 100%;
+  }
+
+  &__section {
+    background: $color-surface;
+    padding: 24px;
+    border: 1px solid rgba($color-elements, 0.2);
+    border-radius: $border-radius-lg;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  &__section-title {
+    @include h3;
+    color: $color-primary;
+    margin-top: 0;
+    margin-bottom: 8px;
+  }
+
+  &__section-number {
+    color: $color-primary;
+    font-weight: 700;
+    margin-right: 12px;
+  }
+
+  &__field-group {
+    display: flex;
+    gap: 16px;
+
+    @media (max-width: $breakpoint-mobile) {
+      flex-direction: column;
+    }
+  }
+
+  &__field {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+
+    &--relative {
+      position: relative;
+    }
+  }
+
+  &__sidebar {
+    width: 368px;
+    padding: 24px;
+    border: 1px solid rgba($color-elements, 0.2);
+    background: $color-surface;
+    position: sticky;
+    top: 24px;
+    border-radius: $border-radius-md;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @media (max-width: $breakpoint-tablet) {
+      width: 100%;
+      position: static;
+    }
+  }
+
+  &__submit-error {
+    color: #eb5757;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: center;
+    margin-top: 12px;
+  }
+
+  &__mini-cart {
+    max-height: 340px;
+    overflow-y: auto;
+    padding-right: 4px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    padding-bottom: 16px;
+  }
+
+  &__mini-cart-empty {
+    @include body-text;
+    color: $color-elements;
+    text-align: center;
+    margin: 16px 0;
+  }
+
+  &__summary-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .checkout-page__total-label {
+      @include h3;
+      margin: 0;
+    }
+    .checkout-page__total-value {
+      @include h2;
+      margin: 0;
+    }
+  }
+
+  &__input,
+  &__select {
+    width: 100%;
+    height: 48px;
+    padding: 0 20px;
+    border-radius: $border-radius-lg;
+    font-size: 14px;
+    transition: all 0.2s ease;
+
+    // Стилі скопійовані з .input у header.scss (Light UI)
+    background-color: rgba(212, 196, 176, 0.3);
+    border: 1px solid $color-elements-light;
+    color: $color-primary-light;
+
+    &::placeholder {
+      color: $color-elements-light;
+    }
+
+    &:focus {
+      outline: none;
+      background-color: rgba(0, 0, 0, 0.15);
+      border-color: $color-primary;
+    }
+
+    &--error {
+      border-color: #eb5757 !important;
+    }
+  }
+
+  &__label {
+    display: block;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: $color-primary;
+    @include small-text;
+  }
+
+  .error-message {
+    display: block;
+    color: #eb5757;
+    font-size: 12px;
+    margin-top: 2px;
+    font-weight: 500;
+  }
+
+  &__delivery-types {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  &__delivery-type {
+    flex: 1;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid $color-primary;
+    background-color: $color-surface;
+    color: $color-primary;
+    cursor: pointer;
+    border-radius: $border-radius-lg;
+    font-size: 14px;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+
+    input {
+      display: none;
+    }
+
+    &:hover {
+      background-color: $color-surface;
+    }
+
+    &--active {
+      background-color: $color-primary;
+      color: $raw-ice;
+      font-weight: bold;
+
+      &:hover {
+        background-color: $color-primary;
+      }
+    }
+  }
+
+  &__autocomplete {
+    position: relative;
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: 50px;
+    left: 0;
+    right: 0;
+    background: $color-surface;
+    border: 1px solid $color-elements;
+    border-radius: $border-radius-lg;
+    z-index: 10;
+    max-height: 220px;
+    overflow-y: auto;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+
+    li {
+      padding: 12px 16px;
+      cursor: pointer;
+      font-size: 14px;
+      &:hover {
+        background: rgba($color-elements, 0.1);
+        color: $color-primary;
+      }
+    }
+  }
+
+  &__hint {
+    font-size: 12px;
+    color: $color-elements;
+    margin: -8px 0 16px 4px;
+
+    &--error {
+      color: #eb5757;
+    }
+  }
+
+  &__card-error-msg {
+    font-size: 14px !important;
+    margin-bottom: 16px !important;
+    font-weight: 500;
+    padding: 10px 14px;
+    background: rgba(#eb5757, 0.08);
+    border-left: 3px solid #eb5757;
+    border-radius: 8px;
+  }
+
+  &__submit-btn {
+    width: 100%;
+    height: 52px;
+    background: $color-primary;
+    color: $raw-ice;
+    border: none;
+    border-radius: $border-radius-lg;
+    font-weight: bold;
+    font-size: 16px;
+    cursor: pointer;
+    margin-top: 24px;
+    transition: background 0.2s;
+
+    &:disabled {
+      background: $color-elements;
+      cursor: not-allowed;
+    }
+  }
+}
+
+.checkout-mini-item {
+  display: flex;
+  flex-direction: row;
+  gap: 12px;
+  padding: 12px;
+  background: rgba($color-primary, 0.05);
+  border: 1px solid rgba($color-primary, 0.1);
+  border-radius: 12px;
+  position: relative;
+
+  &__main {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+  }
+
+  &__img {
+    width: 60px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 8px;
+    background-color: rgba($color-elements, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.05);
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-size: 13px;
+    font-weight: 600;
+    color: $color-primary;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  &__price {
+    font-size: 13px;
+    font-weight: 500;
+    color: $color-primary;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    flex: 1;
+    min-width: 0;
+  }
+
+  &__actions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: 1px dashed rgba($color-elements, 0.2);
+    padding-top: 8px;
+  }
+
+  &__delete-btn {
+    position: absolute;
+    top: 4px;
+    right: 4px;
+    background: rgba($color-elements, 0.1);
+    border: none;
+    color: #eb5757;
+    cursor: pointer;
+    font-size: 12px;
+    width: 24px;
+    height: 24px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background 0.2s;
+
+    &:hover {
+      background: rgba(#eb5757, 0.1);
+    }
+  }
+}
+
+.checkout-mini-counter {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba($color-elements, 0.3);
+  border-radius: $border-radius-lg;
+  background: $color-surface;
+  height: 32px;
+  width: fit-content;
+
+  &__btn {
+    width: 32px;
+    height: 100%;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 18px;
+    color: $color-primary;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+
+    &:hover {
+      background: rgba($color-elements, 0.1);
+    }
+  }
+
+  &__value {
+    width: 40px;
+    text-align: center;
+    font-size: 14px;
+    font-weight: bold;
+    color: $color-primary;
+  }
+}
+
+/* СТИЛІ 3D-КАРТКИ ОПЛАТИ */
+.card-container {
+  perspective: 1000px;
+  width: 340px;
+  height: 200px;
+  margin: 0 auto 32px auto;
+
+  @media (max-width: 400px) {
+    width: 100%;
+    height: 180px;
+  }
+}
+
+.credit-card {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: transform 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #ffffff;
+  font-family: 'Courier New', Courier, monospace;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  border-radius: 14px;
+
+  &.flipped {
+    transform: rotateY(180deg);
+  }
+}
+
+.card-front,
+.card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 14px;
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background: linear-gradient(135deg, #1e1e2f 0%, #3a3a52 100%);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  justify-content: flex-start;
+  padding: 24px 0;
+}
+
+.card-chip {
+  width: 46px;
+  height: 34px;
+  background: linear-gradient(135deg, #f0ca43 0%, #b88d09 100%);
+  border-radius: 6px;
+}
+
+.card-number-display {
+  font-size: 22px;
+  letter-spacing: 2px;
+  margin-top: 16px;
+}
+
+.card-bottom-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+}
+
+.card-holder-display,
+.card-expiry-display {
+  display: flex;
+  flex-direction: column;
+
+  .label {
+    font-size: 9px;
+    color: #b0b0c5;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+    font-family: Arial, sans-serif;
+  }
+
+  .value {
+    font-size: 14px;
+    letter-spacing: 1px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    max-width: 180px;
+  }
+}
+
+.card-magnetic-stripe {
+  width: 100%;
+  height: 44px;
+  background: #11111a;
+  margin-top: 10px;
+}
+
+.card-cvc-box {
+  padding: 0 24px;
+  margin-top: 24px;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+
+  .label {
+    font-size: 9px;
+    color: #b0b0c5;
+    margin-bottom: 6px;
+  }
+}
+
+.card-cvc-display {
+  background: #ffffff;
+  color: #11111a;
+  padding: 8px 14px;
+  border-radius: 4px;
+  width: 64px;
+  text-align: center;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.card-form-inputs {
+  max-width: 440px;
+  margin: 0 auto;
+}
+
+.card-form-row {
+  display: flex;
+  gap: 16px;
+}
+
+.checkout-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+  padding: 20px;
+}
+
+.checkout-modal {
+  background: $color-surface;
+  padding: 32px;
+  border-radius: 8px;
+  max-width: 480px;
+  width: 100%;
+  text-align: center;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  border-top: 6px solid $color-primary;
+
+  h3 {
+    @include h2;
+    color: $color-primary;
+    margin-top: 0;
+    margin-bottom: 16px;
+  }
+
+  p {
+    @include body-text;
+    color: $color-primary;
+    margin-bottom: 24px;
+  }
+
+  &--error {
+    border-top-color: #eb5757;
+    h3 {
+      color: #eb5757;
+    }
+  }
+
+  &__btn {
+    height: 44px;
+    padding: 0 24px;
+    background: $color-primary;
+    color: $raw-ice;
+    border: none;
+    border-radius: 4px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.2s;
+
+    &:hover {
+      background: lighten($color-primary, 5%);
+    }
+  }
+}
+
+.first-purchase-badge {
+  background-color: rgba($color-primary, 0.1);
+  color: $color-primary;
+  padding: 12px;
+  border-radius: $border-radius-lg;
+  font-size: 14px;
+  font-weight: 600;
+  border: 1px dashed $color-primary;
+  text-align: center;
+  margin-bottom: 8px;
+}
+
+.checkout-page__summary-details {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  border-top: 1px solid rgba($color-elements, 0.2);
+  padding-top: 16px;
+}
+
+.checkout-page__summary-item {
+  display: flex;
+  justify-content: space-between;
+  color: $color-primary;
+  @include small-text;
+
+  &--discount {
+    color: $color-primary;
+    font-weight: 600;
+  }
+}
+
+/* СТИЛІ ДЛЯ ТЕМНОЇ ТЕМИ ENHANCEMENT */
+[data-theme='dark'] {
+  .checkout-page__title,
+  .checkout-page__section-title,
+  .checkout-page__summary-row .checkout-page__total-label,
+  .checkout-page__summary-row .checkout-page__total-value,
+  .checkout-page__summary-item,
+  .checkout-page__summary-item--discount {
+    color: $color-primary-dark;
+  }
+
+  .checkout-page__section-number {
+    color: $color-accent-dark;
+  }
+
+  .checkout-page__section,
+  .checkout-page__sidebar,
+  .checkout-modal {
+    background: $color-surface-dark;
+    border-color: $color-elements-dark;
+  }
+
+  .checkout-mini-item {
+    background: rgba($color-bg-dark, 0.6);
+    border-color: $color-elements-dark;
+
+    .checkout-page__label {
+      color: $color-primary-dark;
+    }
+
+    &__title,
+    &__price {
+      color: $color-primary-dark;
+    }
+
+    &__delete-btn {
+      background: rgba($color-elements-dark, 0.5);
+      color: #ff4d4d;
+    }
+
+    &__actions {
+      border-top-color: rgba($color-elements-dark, 0.4);
+    }
+
+    &__img {
+      background-color: $color-bg-dark;
+      border-color: rgba(255, 255, 255, 0.05);
+    }
+  }
+
+  .checkout-mini-counter {
+    border-color: $color-elements-dark;
+    background: $color-surface-dark;
+
+    &__btn {
+      color: $color-white;
+      &:hover {
+        background: $color-hover-bg-dark;
+      }
+    }
+
+    &__value {
+      color: $color-white;
+    }
+  }
+
+  .checkout-modal h3 {
+    color: #2ecc71;
+  }
+  .checkout-modal--error h3 {
+    color: #ff4d4d;
+  }
+  .checkout-modal p {
+    color: $color-white;
+  }
+
+  .first-purchase-badge {
+    background-color: rgba($color-accent-dark, 0.1);
+    color: $color-accent-dark;
+    border-color: $color-accent-dark;
+  }
+
+  .checkout-page__input,
+  .checkout-page__select {
+    // Скопійовані стилі інпута для темної теми з файлу header.scss
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 1px solid $color-elements-dark;
+    color: $color-primary-dark;
+
+    &::placeholder {
+      color: $color-icons-dark;
+      opacity: 1;
+    }
+
+    &:focus {
+      background-color: rgba(255, 255, 255, 0.2);
+      border-color: $color-primary-dark;
+    }
+  }
+
+  .checkout-page__delivery-type {
+    border-color: $color-primary-dark;
+    background-color: $color-bg-dark;
+    color: $color-primary-dark;
+
+    &:hover {
+      background-color: $color-bg-dark;
+    }
+
+    &--active {
+      background-color: $color-primary-dark;
+      color: $color-bg-dark;
+
+      &:hover {
+        background-color: $color-primary-dark;
+      }
+    }
+  }
+
+  .checkout-page__dropdown {
+    background: $color-surface-dark;
+    border-color: $color-elements-dark;
+
+    li {
+      &:hover {
+        background: $color-hover-bg-dark;
+        color: $color-primary-dark;
+      }
+    }
+  }
+
+  .checkout-page__submit-btn,
+  .checkout-modal__btn {
+    background: $color-primary-dark;
+    color: $color-bg-dark;
+
+    &:disabled {
+      background: $color-elements-dark;
+      color: $color-icons-dark;
+    }
+  }
+}

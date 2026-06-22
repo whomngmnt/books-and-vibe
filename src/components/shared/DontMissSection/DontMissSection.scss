@@ -1,0 +1,195 @@
+@use '../../../styles/variables' as *;
+
+.dont-miss-section {
+  max-width: 1400px;
+  margin: 24px auto 0;
+  padding: 64px 36px;
+  background: linear-gradient(
+    135deg,
+    rgba(245, 240, 232, 0.98) 0%,
+    rgba(232, 220, 200, 0.86) 100%
+  );
+  border-radius: $border-radius-xl;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid rgba(122, 99, 85, 0.18);
+  box-shadow: 0 20px 50px rgba(45, 34, 26, 0.08);
+
+  &__content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 48px;
+  }
+
+  &__text {
+    flex: 1;
+    max-width: 460px;
+    padding: 12px 0;
+  }
+
+  &__eyebrow {
+    display: inline-block;
+    margin-bottom: 16px;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(196, 127, 107, 0.16);
+    color: $color-terracotta-light;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+  }
+
+  &__title {
+    @include h2;
+    color: $color-primary-light;
+    margin-bottom: 16px;
+    font-size: clamp(32px, 3.4vw, 48px);
+    line-height: 1.05;
+    font-weight: 800;
+    letter-spacing: -0.02em;
+  }
+
+  &__subtitle {
+    @include body-text;
+    color: $color-elements-light;
+    line-height: 1.7;
+    font-size: 17px;
+    font-weight: 600;
+  }
+
+  &__books {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 24px;
+    height: 420px;
+    position: relative;
+    padding: 16px;
+    border-radius: 28px;
+    background: linear-gradient(
+      135deg,
+      rgba(255, 255, 255, 0.4),
+      rgba(240, 225, 206, 0.45)
+    );
+    backdrop-filter: blur(8px);
+  }
+
+  &__book {
+    position: absolute;
+    width: 200px;
+    height: 300px;
+    border-radius: $border-radius-lg;
+    overflow: hidden;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+    border: 1px solid rgba(255, 255, 255, 0.35);
+    transition: all 0.5s ease;
+  }
+
+  &__book-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  @media (max-width: $breakpoint-mobile) {
+    padding: 48px 20px;
+    border-radius: $border-radius-lg;
+
+    &__content {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &__text {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    &__title {
+      font-size: 28px;
+    }
+
+    &__eyebrow {
+      margin-bottom: 12px;
+    }
+
+    &__subtitle {
+      font-size: 16px;
+    }
+
+    &__books {
+      height: 300px;
+      gap: 16px;
+    }
+
+    &__book {
+      width: 120px;
+      height: 180px;
+    }
+  }
+
+  @media (max-width: $breakpoint-tablet) {
+    max-width: 100%;
+    margin: 0 16px;
+
+    &__content {
+      flex-direction: column;
+      gap: 32px;
+    }
+
+    &__text {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    &__books {
+      height: 360px;
+    }
+
+    &__book {
+      width: 160px;
+      height: 240px;
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .dont-miss-section {
+    background: linear-gradient(
+      135deg,
+      rgba(27, 31, 39, 0.72) 0%,
+      rgba(27, 31, 39, 0.56) 100%
+    );
+    border-color: rgba(41, 48, 61, 0.18);
+
+    &__eyebrow {
+      background: rgba(229, 143, 121, 0.16);
+      color: $color-accent-light;
+    }
+
+    &__title {
+      color: $color-primary-dark;
+    }
+
+    &__subtitle {
+      color: $color-icons-dark;
+    }
+
+    &__books {
+      background: linear-gradient(
+        135deg,
+        rgba(27, 31, 39, 0.4),
+        rgba(27, 31, 39, 0.45)
+      );
+    }
+
+    &__book {
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+      border-color: rgba(255, 255, 255, 0.1);
+    }
+  }
+}

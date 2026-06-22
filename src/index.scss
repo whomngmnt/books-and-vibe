@@ -1,0 +1,60 @@
+@use './styles/reset.scss';
+@use './styles/variables.scss' as *;
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  font-family: $font-body;
+  color: $color-primary-light;
+  margin: 0;
+  padding: 0;
+  background-color: $color-bg-light;
+
+  &[data-theme='dark'] {
+    background-color: $color-bg-dark;
+    color: $color-primary-dark;
+  }
+}
+
+#root {
+  display: flex;
+  background-color: $color-bg-light;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  scrollbar-gutter: stable;
+}
+
+body[data-theme='dark'] #root {
+  background-color: $color-bg-dark;
+}
+
+.main-content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content > * {
+  width: 100%;
+  flex: 1;
+}
+
+.cn-toast {
+  // Перевизначаємо внутрішні змінні Sonner через твої SCSS-змінні
+  --normal-bg: #{$color-surface-light};
+  --normal-text: #{$color-primary};
+  --normal-border: #{$color-primary};
+
+  border-radius: 12px;
+}
+
+[data-theme='dark'] {
+  .cn-toast {
+    --normal-bg: #{$color-icons-dark};
+    --normal-text: #{$color-primary-dark};
+    --normal-border: #{$color-hover-bg-dark};
+  }
+}

@@ -1,0 +1,204 @@
+@use '../../styles/variables.scss' as *;
+
+.wrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.opened {
+  height: auto;
+  overflow: visible;
+}
+
+.site {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100vh;
+  display: flex;
+}
+
+.opened .site {
+  position: relative;
+}
+
+.intro,
+.loading,
+.enterButton,
+.loadingText {
+  font-family: $font-heading;
+  font-weight: bold;
+}
+
+.loading {
+  position: absolute;
+  inset: 0;
+  z-index: 20;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+  overflow: hidden;
+  background: $color-primary;
+}
+
+.loadingOverlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.18);
+}
+
+.loaderContent {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+
+  padding: 0 24px;
+}
+
+.loadingText {
+  max-width: min(760px, calc(100vw - 32px));
+  margin: 0;
+
+  font-size: clamp(18px, 3vw, 42px);
+  letter-spacing: 0.14em;
+  line-height: 1.2;
+  text-transform: uppercase;
+  text-align: center;
+  color: $color-primary;
+
+  overflow-wrap: normal;
+  word-break: normal;
+  text-transform: lowercase;
+}
+
+.loadingText :global(.word) {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+.loadingText :global(.char) {
+  display: inline-block;
+}
+
+.loadingDots {
+  display: flex;
+  gap: 8px;
+}
+
+.loadingDots span {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: $color-primary;
+  opacity: 0.35;
+}
+
+.intro {
+  position: absolute;
+  inset: 0;
+  z-index: 30;
+  overflow: hidden;
+}
+
+.leftDoor,
+.rightDoor {
+  position: absolute;
+  top: 0;
+
+  width: 50%;
+  height: 100%;
+
+  background: $raw-coffee-dark;
+}
+
+.leftDoor {
+  left: 0;
+}
+
+.rightDoor {
+  right: 0;
+}
+
+.centerLine {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  z-index: 2;
+
+  width: 1px;
+  height: 100%;
+  transform: translateX(-50%);
+}
+
+.enterButton {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 18px;
+
+  border: 0;
+  background: transparent;
+}
+
+.logoWrapper {
+  width: clamp(220px, 32vw, 520px);
+  display: block;
+}
+
+.logo {
+  width: clamp(220px, 32vw, 520px);
+  display: block;
+}
+
+.logo svg,
+.logo img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.hint {
+  font-size: 12px;
+  font-weight: $font-bold;
+  letter-spacing: 0.25em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  text-align: center;
+}
+
+[data-theme='dark'] {
+  .leftDoor,
+  .rightDoor {
+    background: $raw-slate;
+  }
+
+  .hint {
+    color: rgba(240, 242, 245, 0.55);
+  }
+
+  .loadingText {
+    color: $raw-cream;
+  }
+
+  .loadingDots span {
+    background: $raw-cream;
+  }
+}

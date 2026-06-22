@@ -1,0 +1,40 @@
+@use '../../../styles/variables' as *;
+
+.button {
+  width: 40px !important;
+  height: 40px !important;
+  min-width: 40px !important;
+  border-radius: 12px !important;
+  border: 1px solid $color-elements-light !important;
+  background-color: transparent !important;
+  color: $color-primary-light !important;
+  transition: transform 300ms ease;
+
+  &:hover {
+    border-color: $color-terracotta-light !important;
+    transform: scale(1.02);
+  }
+}
+
+.selected {
+  border-color: $color-terracotta-light !important;
+  color: $color-terracotta-light !important;
+}
+
+[data-theme='dark'] {
+  .button {
+    border-color: $color-elements-dark !important;
+    background-color: $color-surface-dark !important;
+    color: $color-primary-dark !important;
+
+    &:hover {
+      border-color: $color-aquamarine !important;
+      color: $color-aquamarine !important;
+    }
+  }
+
+  .selected {
+    border-color: $color-aquamarine !important;
+    color: $color-aquamarine !important;
+  }
+}

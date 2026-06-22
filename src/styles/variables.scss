@@ -1,0 +1,190 @@
+// ==========================================================================
+// 1. БАЗОВА ПАЛІТРА (КОНСТАНТИ) - Сюди ШІ не лізе, це просто донори кольору
+// ==========================================================================
+$raw-cream: #f5f0e8; // Світлий крем
+$raw-grey-white: #b6b6b6; // Світло-сірий
+$raw-charcoal: #2a2420; // Вугільно-кавовий
+$raw-coffee-dark: #42352d; // Глибока кава
+$raw-clay-muted: #7a6355; // Приглушена глина
+$raw-wood-hover: #6b5a4f; // Теплий ховер фону
+
+$raw-aquamarine: #1f636c; // Морська хвиля / Аквамарин
+$raw-aqua-deep: #1a4a52; // Глибокий аквамарин
+$raw-aqua-hover: #144448; // Темний аквамарин для ховеру
+$raw-aqua-active: #0e363b; // Найтемніший аквамарин для кліку
+
+$raw-midnight: #11141a; // Чорнильна ніч (фон темної теми)
+$raw-slate: #1b1f27; // Грифельний синій (картки темної теми)
+$raw-ice: #f0f2f5; // Прохолодний крем (текст темної теми)
+$raw-steel: #6e7b8e; // Сталевий приглушений
+$raw-neon-clay: #e58f79; // Теракотовий неон (акцент темної теми)
+
+// ==========================================================================
+// 2. СВІТЛА ТЕМА (LIGHT THEME VARIABLES)
+// ==========================================================================
+$color-bg-light: $raw-cream;
+$color-surface-light: $raw-cream;
+$color-primary-light: $raw-coffee-dark;
+$color-white-light: $raw-grey-white;
+$color-icons-light: rgba(168, 155, 138, 0.67);
+$color-elements-light: $raw-clay-muted;
+$color-hover-bg-light: $raw-wood-hover;
+
+$color-accent-light: $raw-aquamarine;
+$color-accent-hover-light: $raw-aqua-hover;
+$color-accent-active-light: $raw-aqua-active;
+
+$color-terracotta-light: #f35353;
+$color-terracotta-hover-light: #ff5959;
+$color-terracotta-active-light: #d94a4a;
+
+// ==========================================================================
+// 3. ТЕМНА ТЕМА (DARK THEME VARIABLES)
+// ==========================================================================
+$color-bg-dark: $raw-midnight; // Головний фон сторінки
+$color-surface-dark: $raw-slate; // Фон карток книг, поп-апів, меню
+$color-primary-dark: $raw-ice; // Основний текст (заголовки, назви)
+$color-icons-dark: $raw-steel; // Іконки, стрілочки слайдерів
+$color-elements-dark: #29303d; // Тонкі лінії журнальної сітки, бордери
+$color-hover-bg-dark: #242a35; // Колір фону при наведенні на елемент
+$color-elements-hover: #343d4c; // Ховер для бордерів
+
+// Темні акценти (Твій фірмовий неоново-цегляний для темної теми)
+$color-accent-dark: $raw-neon-clay;
+$color-accent-hover-dark: #c5593e;
+$color-accent-active-dark: #b35a41;
+
+// ==========================================================================
+// 4. СУМІСНІСТЬ З СТАРИМ КОДОМ (COMPATIBILITY ALIASES)
+// ==========================================================================
+
+// Для світлої теми (за замовчуванням)
+$color-bg: $color-bg-light;
+$color-surface: $color-surface-light;
+$color-primary: $color-primary-light;
+$color-white: $color-white-light;
+$color-icons: $color-icons-light;
+$color-elements: $color-elements-light;
+$color-hover-bg: $color-hover-bg-light;
+$color-accent: $color-accent-light;
+$color-accent-hover: $color-accent-hover-light;
+$color-accent-active: $color-accent-active-light;
+
+// Додаткові аліаси для сумісності
+$color-brick: $color-terracotta-light;
+$color-brown: $raw-aqua-deep;
+$color-cream: $raw-cream;
+$color-charcoal: $raw-charcoal;
+
+// Аквамарин (для кнопок у світлій темі)
+$color-aquamarine: $raw-aquamarine;
+$color-aquamarine-hover: $raw-aqua-hover;
+$color-aquamarine-active: $raw-aqua-active;
+
+$breakpoint-tablet: 1199px;
+$breakpoint-mobile: 639px;
+
+@import url('https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap');
+
+$font-heading: 'Quicksand', sans-serif;
+$font-accent: 'Playfair Display', serif;
+$font-body: 'Nunito', sans-serif;
+
+$font-regular: 400;
+$font-medium: 500;
+$font-semibold: 600;
+$font-bold: 700;
+
+@mixin h1 {
+  font-family: $font-heading;
+  font-size: 56px;
+  line-height: 64px;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 36px;
+    line-height: 44px;
+    letter-spacing: -0.01em;
+  }
+}
+
+@mixin h2 {
+  font-family: $font-heading;
+  font-size: 40px;
+  line-height: 48px;
+  font-weight: 600;
+  letter-spacing: -0.01em;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 28px;
+    line-height: 36px;
+    letter-spacing: 0;
+  }
+}
+
+@mixin h3 {
+  font-family: $font-heading;
+  font-size: 28px;
+  line-height: 36px;
+  font-weight: 600;
+  letter-spacing: 0;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 24px;
+    line-height: 32px;
+  }
+}
+
+@mixin h4 {
+  font-family: $font-heading;
+  font-size: 24px;
+  line-height: 32px;
+  font-weight: 600;
+  letter-spacing: 0;
+
+  @media (max-width: $breakpoint-mobile) {
+    font-size: 20px;
+    line-height: 28px;
+  }
+}
+
+@mixin uppercase-text {
+  font-family: $font-heading;
+  font-size: 12px;
+  line-height: 16px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+@mixin button-text {
+  font-family: $font-heading;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 600;
+  letter-spacing: 0;
+}
+
+@mixin body-text {
+  font-family: $font-body;
+  font-size: 16px;
+  line-height: 24px;
+  font-weight: 400;
+  letter-spacing: 0;
+}
+
+@mixin small-text {
+  font-family: $font-body;
+  font-size: 14px;
+  line-height: 20px;
+  font-weight: 500;
+  letter-spacing: 0;
+}
+
+$border-radius-md: 20px;
+$border-radius-lg: 32px;
+$border-radius-xl: 48px;
+$border-radius-full: 9999px;
+
+$shadow-card: 0 0 12px rgba(249, 115, 22, 0.5);

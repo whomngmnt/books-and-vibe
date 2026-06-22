@@ -1,0 +1,110 @@
+@use '../../../styles/variables' as *;
+
+.user-menu {
+  position: relative;
+  display: inline-block;
+  padding: 0 8px;
+
+  &__avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 2px solid $color-terracotta-light;
+    background: $color-cream;
+    cursor: pointer;
+    transition: all 0.2s;
+    background-size: 100% 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    &:hover {
+      opacity: 0.8;
+      transform: scale(1.05);
+    }
+  }
+
+  &__dropdown {
+    position: absolute;
+    top: calc(100% + 8px);
+    right: 0;
+    background: $color-cream;
+    border: 1px solid rgba(122, 99, 85, 0.2);
+    border-radius: $border-radius-lg;
+    box-shadow: 0 12px 40px rgba(45, 34, 26, 0.18);
+    min-width: 220px;
+    z-index: 100;
+    padding: 8px;
+  }
+
+  &__item {
+    width: 100%;
+    padding: 12px 16px;
+    background: none;
+    border: none;
+    text-align: left;
+    font-size: 14px;
+    color: $color-primary;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: $border-radius-md;
+
+    &:hover {
+      background: rgba(229, 92, 59, 0.12);
+      color: $color-terracotta-light;
+    }
+
+    &--with-icon {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    &--danger {
+      color: $color-terracotta-light;
+
+      &:hover {
+        background: rgba(229, 92, 59, 0.12);
+      }
+    }
+  }
+
+  &__divider {
+    height: 1px;
+    background: rgba(122, 99, 85, 0.2);
+    margin: 8px 0;
+  }
+}
+
+[data-theme='dark'] {
+  .user-menu {
+    &__avatar {
+      border-color: $color-accent-light;
+    }
+
+    &__dropdown {
+      background: $color-surface-dark;
+      border-color: $color-elements-dark;
+    }
+
+    &__item {
+      color: $color-primary-dark;
+
+      &:hover {
+        background: rgba(0, 188, 212, 0.12);
+        color: $color-aquamarine;
+      }
+
+      &--danger {
+        color: $color-aquamarine;
+
+        &:hover {
+          background: rgba(31, 99, 108, 0.12);
+        }
+      }
+    }
+
+    &__divider {
+      background: $color-elements-dark;
+    }
+  }
+}

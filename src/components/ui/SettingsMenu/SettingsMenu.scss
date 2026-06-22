@@ -1,0 +1,130 @@
+@use '../../../styles/variables' as *;
+
+.settings-menu {
+  position: relative;
+  padding: 0 4px;
+
+  &__button {
+    border: none;
+    cursor: pointer;
+    padding: 8px;
+    transition: all 0.2s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: $border-radius-md;
+    width: 36px;
+    height: 36px;
+
+    &:hover {
+      transform: scale(1.05);
+    }
+  }
+
+  &__icon {
+    width: 18px;
+    height: 18px;
+  }
+
+  &__backdrop {
+    position: fixed;
+    inset: 0;
+    z-index: 1100;
+    display: flex;
+    justify-content: flex-end;
+    align-items: flex-start;
+    padding: 72px 20px 20px;
+  }
+
+  &__modal {
+    background: $color-cream;
+    border-radius: $border-radius-lg;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    min-width: 320px;
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    border: 1px solid rgba(122, 99, 85, 0.2);
+  }
+
+  &__title {
+    margin: 0 0 4px;
+    font-size: 14px;
+    font-weight: $font-semibold;
+    color: $color-primary;
+  }
+
+  &__option {
+    background: none;
+    border: none;
+    text-align: left;
+    padding: 12px 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    font-size: 15px;
+    color: $color-primary;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    &:hover {
+      background: rgba(196, 127, 107, 0.12);
+      color: $color-terracotta-light;
+    }
+
+    &--with-icon {
+      gap: 10px;
+    }
+
+    &--primary {
+      background: $color-terracotta-light;
+      color: $color-cream;
+      font-weight: $font-semibold;
+      text-align: center;
+      justify-content: center;
+      padding: 16px 18px;
+      font-size: 16px;
+      transition: all 0.2s ease;
+
+      &:hover {
+        background: $color-terracotta-hover-light;
+        color: $color-cream;
+        transform: scale(1.05);
+      }
+    }
+  }
+}
+
+[data-theme='dark'] {
+  .settings-menu {
+    &__modal {
+      background: $color-surface-dark;
+      border-color: $color-elements-dark;
+    }
+
+    &__title {
+      color: $color-primary-dark;
+    }
+
+    &__option {
+      color: $color-primary-dark;
+
+      &:hover {
+        background: rgba(0, 188, 212, 0.12);
+        color: $color-aquamarine;
+      }
+
+      &--primary {
+        background: $color-accent-light;
+        color: $color-white;
+
+        &:hover {
+          background: $color-accent-hover-light;
+          color: $color-white;
+        }
+      }
+    }
+  }
+}
