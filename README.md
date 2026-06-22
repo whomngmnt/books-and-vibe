@@ -1,6 +1,8 @@
-# 📚 Nice Book Store
+# 📚 Books and Vibe Store
 
 Modern online bookstore built with React, TypeScript, and Supabase.
+
+DEMO:  https://whomngmnt.github.io/books-and-vibe/
 
 ## Overview
 
